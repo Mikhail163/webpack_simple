@@ -1,0 +1,8 @@
+$body_color: green;
+
+.admin {
+    color: $body_color;
+    &_div {
+        font-size: 3rem;
+    }
+}

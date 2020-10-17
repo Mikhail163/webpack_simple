@@ -1,0 +1,8 @@
+$body_color: red;
+
+.app {
+    color: $body_color;
+    &_div {
+        font-size: 2rem;
+    }
+}
