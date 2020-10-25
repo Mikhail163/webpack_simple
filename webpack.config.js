@@ -16,7 +16,7 @@ module.exports = {
     admin: PATHS.src_admin,
   },
   output: {
-    filename: '[name].[contenthash:8].js',
+    filename: '[name].js?v=[contenthash:8]',
     path: PATHS.dist,
   },
   resolve: {
@@ -70,7 +70,7 @@ module.exports = {
       chunks: ['admin']
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css',
+      filename: '[name].css?v=[contenthash:8]',
     }),
   ],
 };
