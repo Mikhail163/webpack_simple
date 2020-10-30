@@ -20,6 +20,7 @@ module.exports = {
     path: PATHS.dist,
   },
   resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
         js: path.resolve(__dirname, 'src/js/'),
         css: path.resolve(__dirname, 'src/scss/'),
@@ -28,12 +29,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.tsx?$/, // добавляем расширение tsx для файлов с react компонентами
+        loader: 'ts-loader',
+        exclude: /(node_modules|bower_components)/,
+      },
+      {
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+            ]
           }
         }
       },
@@ -73,4 +82,9 @@ module.exports = {
       filename: '[name].css?v=[contenthash:8]',
     }),
   ],
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    port: 8080,
+    historyApiFallback: true
+  }
 };
