@@ -83,8 +83,17 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
     port: 8080,
-    historyApiFallback: true
+    historyApiFallback: true,
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+      staticOptions: {},
+      // Can be:
+      // serveIndex: {} (options for the `serveIndex` option you can find https://github.com/expressjs/serve-index)
+      serveIndex: true,
+      // Can be:
+      // watch: {} (options for the `watch` option you can find https://github.com/paulmillr/chokidar)
+      watch: true,
+    },
   }
 };
